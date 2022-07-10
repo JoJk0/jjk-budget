@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="material-theme">
     <router-view />
     <Footer />
   </main>
