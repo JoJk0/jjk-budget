@@ -5,10 +5,16 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppAvatarButton: typeof import('./src/components/AppAvatarButton.vue')['default']
+    AppFilterChip: typeof import('./src/components/AppFilterChip.vue')['default']
+    AppKey: typeof import('./src/components/AppKey.vue')['default']
+    AppSearchInput: typeof import('./src/components/AppSearchInput.vue')['default']
+    AppTextField: typeof import('./src/components/input-fields/AppTextField.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SubscriptionCard: typeof import('./src/components/item-cards/SubscriptionCard.vue')['default']
   }
 }
 

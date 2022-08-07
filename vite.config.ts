@@ -14,6 +14,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@material/web': `${path.resolve(__dirname, 'node_modules/@material/web')}`,
+      'lit/decorators': `${path.resolve(__dirname, 'node_modules/lit/decorators')}`,
+      'lit/directives': `${path.resolve(__dirname, 'node_modules/lit/directives')}`,
     },
   },
   plugins: [

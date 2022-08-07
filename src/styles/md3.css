@@ -215,7 +215,7 @@
 	--md-sys-color-on-background-dark: #cbe6ff;
 	--md-sys-color-surface-dark: #001e31;
 	--md-sys-color-on-surface-dark: #cbe6ff;
-	--md-sys-color-surface-variant-dark: #3f4945;
+	--md-sys-color-surface-variant-dark: #0B293A;
 	--md-sys-color-on-surface-variant-dark: #bfc9c3;
 	--md-sys-color-inverse-surface-dark: #cbe6ff;
 	--md-sys-color-inverse-on-surface-dark: #001e31;
@@ -275,7 +275,7 @@
 	--md-sys-color-inverse-surface: var(--md-sys-color-inverse-surface-dark);
 	--md-sys-color-inverse-on-surface: var(--md-sys-color-inverse-on-surface-dark);
   }
-},
+}
 @media (prefers-color-scheme: dark) {
   .material-theme {
 	--md-sys-color-primary: var(--md-sys-color-primary-dark);

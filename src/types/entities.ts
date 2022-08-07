@@ -1,17 +1,27 @@
-import type { Currency } from './composables/currency'
-export interface Env {
-  fixerApiKey: string
+import type { Currency } from '../composables/currency'
+import type { SubscriptionListItem } from './list-items'
+import type { DataConnection } from '.'
+
+export interface User {
+  profile: UserProfile
+  settings: UserSettings
+  details: UserDetails
 }
 
-export interface AppData {
-  title: string
-  description: string
-  primary: string
-  secondary: string
-  tertiary: string
+export interface UserProfile {
+  name: string
+  email: string
+}
+
+export interface UserSettings {
+  currency: Currency
+  language: string
+}
+
+export interface UserDetails {
   budgets: Budget[]
   categories: Category[]
-  subscriptions: Subscription[]
+  subscriptions: DataConnection<Subscription, SubscriptionListItem>
   banks: Bank[]
   revenues: Revenue[]
   expenses: Expense[]
@@ -21,14 +31,12 @@ export interface AppData {
 }
 
 export interface Category {
-  id: string
   name: string
   color: string
   icon: string
 }
 
 export interface Budget {
-  id: string
   name: string
   date: DatePeriod
   currencyInfo: CurrencyInfo
@@ -47,7 +55,6 @@ export interface CurrencyInfo {
 }
 
 export interface Bank {
-  id: string
   name: string
   color: string
   accounts: BankAccount[]
@@ -56,7 +63,6 @@ export interface Bank {
 export type BankAccountType = 'CURRENT' | 'SAVINGS' | 'CREDIT_CARD'
 
 export interface BankAccount {
-  id: string
   name: string
   type: BankAccountType
   balance: number
@@ -64,12 +70,14 @@ export interface BankAccount {
 }
 
 export interface Subscription {
-  id: string
   name: string
   amount: number
   currency: Currency
+  startDate: string
   timeframe: Timeframe
+  active?: boolean
   categoryId?: string
+  serviceUrl?: string
 }
 
 export type TimeframeType = 'DAILY' | 'WEEKLY' | 'MONTHLY' | 'YEARLY'
@@ -80,7 +88,6 @@ export interface Timeframe {
 }
 
 export interface Revenue {
-  id: string
   name: string
   color: string
   amount: number
@@ -88,7 +95,6 @@ export interface Revenue {
 }
 
 export interface Expense {
-  id: string
   name: string
   currency: Currency
   subscriptionId?: string
@@ -96,7 +102,6 @@ export interface Expense {
 }
 
 export interface Lending {
-  id: string
   name: string
   amount: number
   currency: Currency
@@ -111,7 +116,6 @@ export interface Interest {
 }
 
 export interface Repayment {
-  id: string
   date: string
   amount: number
   currency: Currency
@@ -120,7 +124,6 @@ export interface Repayment {
 export type Liability = Lending
 
 export interface Investment {
-  id: string
   name: string
   commitments: InvestmentCommitment[]
   date: DatePeriod
@@ -128,7 +131,6 @@ export interface Investment {
 }
 
 export interface InvestmentCommitment {
-  id: string
   amount: number
   currency: Currency
   date: string

@@ -1,16 +1,30 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from 'virtual:generated-pages'
-import type { ThemeDefinition } from 'vuetify'
+import type { IconSet, ThemeDefinition } from 'vuetify'
 import { createVuetify } from 'vuetify'
-import App from './App.vue'
 
 import 'normalize.css'
 import 'vuetify/styles'
+import './styles/material-icons.css'
 import './styles/md3.css'
+import '../../vuetify-md3/tokens/baseline.css'
 import './styles/main.css'
 
-const app = createApp(App)
+// Utilities
+import { h } from 'vue' // Components
+
+import { VLigatureIcon } from 'vuetify/components'
+import App from './App.vue'
+
+const app = createApp(App) // Types
+
+const md: IconSet = {
+  component: props => h(VLigatureIcon, {
+    ...props,
+    class: 'material-symbols-outlined',
+  }),
+}
 
 const mainDark: ThemeDefinition = {
   dark: true,
@@ -88,6 +102,10 @@ const vuetify = createVuetify({
       mainLight,
     },
   },
+  display: {
+    mobileBreakpoint: 'sm',
+  },
+  icons: { defaultSet: 'md', sets: { md } },
 })
 
 const router = createRouter({

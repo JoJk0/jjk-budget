@@ -9,3 +9,5 @@ node_modules
 *.log
 src/composables/data.ts
 src/env.ts
+src/firebase.ts
+src/Data.json

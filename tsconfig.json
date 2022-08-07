@@ -22,5 +22,14 @@
       "~/*": ["src/*"]
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
+  "ts-node": {
+    "extends": "ts-node/node16/tsconfig.json",
+    "compilerOptions": {
+      "module": "NodeNext",
+      "types": [
+        "node"
+      ]
+    },
+  }
 }

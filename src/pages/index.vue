@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-title>Budgets</v-title>
+    <v-card-title>Budgets</v-card-title>
     <router-link to="/budget/0">
       View budget
     </router-link>
