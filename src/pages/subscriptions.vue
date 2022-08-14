@@ -3,11 +3,9 @@
     <h1 class="headline1">
       Subscriptions
     </h1>
-    <!-- <md-filled-button>Filled button</md-filled-button>
-    <md-tonal-button>Tonal button</md-tonal-button> -->
     <AppConnection :options="options">
       <template #default="{ items }">
-        <SubscriptionCard v-for="item of items" :key="item.id" :subscription="item" />
+        <SubscriptionCard v-for="(item, id) of items" :key="id" :subscription="item" />
       </template>
     </AppConnection>
   </section>
@@ -16,7 +14,7 @@
 <script lang="ts" setup>
 import { equalTo, orderByChild } from '@firebase/database'
 import { DateTime } from 'luxon'
-import { useSubscriptions } from '~/composables/api'
+import { subscriptions } from '~/composables/api'
 import AppTextField from '~/components/input-fields/AppTextField.vue'
 import AppConnection from '~/layouts/AppConnection.vue'
 
@@ -26,13 +24,11 @@ import AppConnection from '~/layouts/AppConnection.vue'
 
 // const mdbadge = new MdBadge()
 
-const { createSubscription, getSubscription, removeSubscription, setSubscription, listSubscriptions } = useSubscriptions()
-
 const options = defineConnectionOptions({
   connectionName: 'subscriptions',
   actions: {
     list: {
-      query: listSubscriptions,
+      query: subscriptions.list,
       searchOption: 'name',
       sortOptions: [
         { label: 'Name', value: 'name' },
@@ -73,28 +69,28 @@ const options = defineConnectionOptions({
             { label: 'Inactive', value: 'inactive' },
           ],
         },
-        // {
-        //   label: 'Date',
-        //   name: 'date',
-        //   filterFn: (name, value) => {
-        //     const today = DateTime.local().startOf('day')
-        //     const yesterday = today.minus({ days: 1 })
-        //     return [
-        //       orderByChild(name),
-        //       equalTo(value),
-        //     ]
-        //   },
-        //   values: [
-        //     { label: 'Today', value: 'today' },
-        //     { label: 'Yesterday', value: 'yesterday' },
-        //     { label: 'This week', value: 'thisWeek' },
-        //     { label: 'Last week', value: 'lastWeek' },
-        //     { label: 'This month', value: 'thisMonth' },
-        //     { label: 'Last month', value: 'lastMonth' },
-        //     { label: 'This year', value: 'thisYear' },
-        //     { label: 'Last year', value: 'lastYear' },
-        //   ],
-        // },
+        {
+          label: 'Date',
+          name: 'date',
+          filterFn: (name, value) => {
+            const today = DateTime.local().startOf('day')
+            const yesterday = today.minus({ days: 1 })
+            return [
+              orderByChild(name),
+              equalTo(value),
+            ]
+          },
+          values: [
+            { label: 'Today', value: 'today' },
+            { label: 'Yesterday', value: 'yesterday' },
+            { label: 'This week', value: 'thisWeek' },
+            { label: 'Last week', value: 'lastWeek' },
+            { label: 'This month', value: 'thisMonth' },
+            { label: 'Last month', value: 'lastMonth' },
+            { label: 'This year', value: 'thisYear' },
+            { label: 'Last year', value: 'lastYear' },
+          ],
+        },
         {
           label: 'Amount',
           name: 'amount',
@@ -104,36 +100,37 @@ const options = defineConnectionOptions({
           ],
         },
       ],
-      create: {
-        mutation: createSubscription,
-        fields: [
-          { name: 'name', label: 'Name', component: AppTextField },
-          { name: 'amount', label: 'Amount', component: AppTextField },
-          { name: 'currency', label: 'Currency', component: AppTextField },
-          { name: 'accounts', label: 'Accounts', component: AppTextField },
-        ],
-      },
-      delete: {
-        mutation: removeSubscription,
-      },
-      get: {
-        query: getSubscription,
-        fields: [
-          { name: 'name', label: 'Name', component: AppTextField },
-          { name: 'amount', label: 'Amount', component: AppTextField },
-          { name: 'currency', label: 'Currency', component: AppTextField },
-          { name: 'accounts', label: 'Accounts', component: AppTextField },
-        ],
-      },
-      set: {
-        mutation: setSubscription,
-        fields: [
-          { name: 'name', label: 'Name', component: AppTextField },
-          { name: 'amount', label: 'Amount', component: AppTextField },
-          { name: 'currency', label: 'Currency', component: AppTextField },
-          { name: 'accounts', label: 'Accounts', component: AppTextField },
-        ],
-      },
+    },
+    create: {
+      title: 'Add subscription',
+      mutation: subscriptions.create,
+      fields: [
+        { name: 'name', label: 'Name', component: AppTextField },
+        { name: 'amount', label: 'Amount', component: AppTextField },
+        { name: 'currency', label: 'Currency', component: AppTextField },
+        { name: 'accounts', label: 'Accounts', component: AppTextField },
+      ],
+    },
+    delete: {
+      mutation: subscriptions.remove,
+    },
+    get: {
+      query: subscriptions.get,
+      fields: [
+        { name: 'name', label: 'Name', component: AppTextField },
+        { name: 'amount', label: 'Amount', component: AppTextField },
+        { name: 'currency', label: 'Currency', component: AppTextField },
+        { name: 'accounts', label: 'Accounts', component: AppTextField },
+      ],
+    },
+    set: {
+      mutation: subscriptions.set,
+      fields: [
+        { name: 'name', label: 'Name', component: AppTextField },
+        { name: 'amount', label: 'Amount', component: AppTextField },
+        { name: 'currency', label: 'Currency', component: AppTextField },
+        { name: 'accounts', label: 'Accounts', component: AppTextField },
+      ],
     },
   },
 })

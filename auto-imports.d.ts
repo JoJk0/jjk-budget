@@ -88,6 +88,7 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const subscriptions: typeof import('./src/composables/api')['subscriptions']
   const subscriptionsByName: typeof import('./src/composables/api')['subscriptionsByName']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
@@ -204,6 +205,7 @@ declare global {
   const usePreferredDark: typeof import('@vueuse/core')['usePreferredDark']
   const usePreferredLanguages: typeof import('@vueuse/core')['usePreferredLanguages']
   const useProfile: typeof import('./src/composables/api')['useProfile']
+  const useRTDBQuery: typeof import('./src/composables/index')['useRTDBQuery']
   const useRafFn: typeof import('@vueuse/core')['useRafFn']
   const useRefHistory: typeof import('@vueuse/core')['useRefHistory']
   const useResizeObserver: typeof import('@vueuse/core')['useResizeObserver']
@@ -223,7 +225,6 @@ declare global {
   const useStorage: typeof import('@vueuse/core')['useStorage']
   const useStorageAsync: typeof import('@vueuse/core')['useStorageAsync']
   const useStyleTag: typeof import('@vueuse/core')['useStyleTag']
-  const useSubscriptions: typeof import('./src/composables/api')['useSubscriptions']
   const useSupported: typeof import('@vueuse/core')['useSupported']
   const useSwipe: typeof import('@vueuse/core')['useSwipe']
   const useTemplateRefsList: typeof import('@vueuse/core')['useTemplateRefsList']
@@ -361,6 +362,7 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly subscriptions: UnwrapRef<typeof import('./src/composables/api')['subscriptions']>
     readonly subscriptionsByName: UnwrapRef<typeof import('./src/composables/api')['subscriptionsByName']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
@@ -477,6 +479,7 @@ declare module '@vue/runtime-core' {
     readonly usePreferredDark: UnwrapRef<typeof import('@vueuse/core')['usePreferredDark']>
     readonly usePreferredLanguages: UnwrapRef<typeof import('@vueuse/core')['usePreferredLanguages']>
     readonly useProfile: UnwrapRef<typeof import('./src/composables/api')['useProfile']>
+    readonly useRTDBQuery: UnwrapRef<typeof import('./src/composables/index')['useRTDBQuery']>
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
     readonly useRefHistory: UnwrapRef<typeof import('@vueuse/core')['useRefHistory']>
     readonly useResizeObserver: UnwrapRef<typeof import('@vueuse/core')['useResizeObserver']>
@@ -496,7 +499,6 @@ declare module '@vue/runtime-core' {
     readonly useStorage: UnwrapRef<typeof import('@vueuse/core')['useStorage']>
     readonly useStorageAsync: UnwrapRef<typeof import('@vueuse/core')['useStorageAsync']>
     readonly useStyleTag: UnwrapRef<typeof import('@vueuse/core')['useStyleTag']>
-    readonly useSubscriptions: UnwrapRef<typeof import('./src/composables/api')['useSubscriptions']>
     readonly useSupported: UnwrapRef<typeof import('@vueuse/core')['useSupported']>
     readonly useSwipe: UnwrapRef<typeof import('@vueuse/core')['useSwipe']>
     readonly useTemplateRefsList: UnwrapRef<typeof import('@vueuse/core')['useTemplateRefsList']>

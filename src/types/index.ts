@@ -21,26 +21,27 @@ export interface DataConnection<T extends U, U> {
   details: (Omit<T, keyof U>)[]
 }
 
-export type ConnectionGetterFunction<T> = CreateGlobalStateReturn<Ref<T[] | undefined>>
+export type ConnectionGetterFunction<T> = (search: string | undefined, searchOption: string /* , sort: string | undefined, filters: FilterOptions<T>, limit: number, offset: number */) => Ref<T[] | undefined>
 
-export interface ConnectionOptions<TListItem> {
+export interface ConnectionOptions<TListItem extends Record<string, string>> {
   connectionName: string
   actions: {
     list: ConnectionListOptions<TListItem>
     create?: {
+      title: string
       mutation: Function
-      fields: (ItemField | ItemSection)[]
+      fields: (ItemField<keyof TListItem & string> | ItemSection)[]
     }
     delete?: {
       mutation: Function
     }
     get?: {
       query: Function
-      fields: (ItemField | ItemSection)[]
+      fields: (ItemField<keyof TListItem & string> | ItemSection)[]
     }
     set?: {
       mutation: Function
-      fields: (ItemField | ItemSection)[]
+      fields: (ItemField<keyof TListItem & string> | ItemSection)[]
     }
   }
 }
@@ -52,13 +53,14 @@ export interface ConnectionListOptions<TListItem> {
   searchOption?: keyof TListItem
 }
 
-export interface ItemField {
+export interface ItemField<TName extends string = string> {
   __typename: 'ItemField'
-  name: string
+  name: TName
   label: string
   component: DefineComponent
   required?: boolean
   disabled?: boolean
+  help?: boolean
 }
 
 export interface ItemSection {

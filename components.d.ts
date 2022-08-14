@@ -7,6 +7,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppAvatarButton: typeof import('./src/components/AppAvatarButton.vue')['default']
     AppFilterChip: typeof import('./src/components/AppFilterChip.vue')['default']
+    AppItemCard: typeof import('./src/components/AppItemCard.vue')['default']
+    AppItemDetails: typeof import('./src/components/AppItemDetails.vue')['default']
     AppKey: typeof import('./src/components/AppKey.vue')['default']
     AppSearchInput: typeof import('./src/components/AppSearchInput.vue')['default']
     AppTextField: typeof import('./src/components/input-fields/AppTextField.vue')['default']
