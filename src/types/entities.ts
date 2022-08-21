@@ -16,6 +16,8 @@ export interface UserProfile {
 export interface UserSettings {
   currency: Currency
   language: string
+  locale: string
+  timezone: string
 }
 
 export interface UserDetails {

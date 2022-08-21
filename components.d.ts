@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AppItemCard: typeof import('./src/components/AppItemCard.vue')['default']
     AppItemDetails: typeof import('./src/components/AppItemDetails.vue')['default']
     AppKey: typeof import('./src/components/AppKey.vue')['default']
+    AppLoadingPlaceholder: typeof import('./src/components/AppLoadingPlaceholder.vue')['default']
     AppSearchInput: typeof import('./src/components/AppSearchInput.vue')['default']
     AppTextField: typeof import('./src/components/input-fields/AppTextField.vue')['default']
     Counter: typeof import('./src/components/Counter.vue')['default']
@@ -17,6 +18,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubscriptionCard: typeof import('./src/components/item-cards/SubscriptionCard.vue')['default']
+    SubscriptionDetails: typeof import('./src/components/item-details/SubscriptionDetails.vue')['default']
   }
 }
 

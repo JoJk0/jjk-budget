@@ -6,7 +6,7 @@ import { useRTDB } from '@vueuse/firebase/useRTDB'
 import { createGlobalState } from '@vueuse/core'
 import type { ConnectionOptions, FilterOptions } from '~/types'
 import firebaseConfig from '~/firebase'
-import type { Subscription, UserProfile } from '~/types/entities'
+import type { Subscription, UserProfile, UserSettings } from '~/types/entities'
 import type { SubscriptionListItem } from '~/types/list-items'
 
 const app = initializeApp(firebaseConfig)
@@ -42,6 +42,7 @@ export const buildQuery = (search: string | undefined, searchOption: string /* ,
 }
 
 export const useProfile = createGlobalState(() => useRTDB<UserProfile>(rtdb.ref(db, `users/${userId}/profile`)))
+export const useUserSettings = createGlobalState(() => useRTDB<UserSettings>(rtdb.ref(db, `users/${userId}/settings`)))
 
 export const subscriptions = {
   list: (search: string | undefined, searchOption: string/* , sort: string | undefined, filters: FilterOptions<Record<string, any>>, limit: number, offset: number */) => createGlobalState(

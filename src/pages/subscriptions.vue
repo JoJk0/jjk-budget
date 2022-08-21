@@ -114,14 +114,10 @@ const options = defineConnectionOptions({
     delete: {
       mutation: subscriptions.remove,
     },
-    get: {
-      query: subscriptions.get,
-      fields: [
-        { name: 'name', label: 'Name', component: AppTextField },
-        { name: 'amount', label: 'Amount', component: AppTextField },
-        { name: 'currency', label: 'Currency', component: AppTextField },
-        { name: 'accounts', label: 'Accounts', component: AppTextField },
-      ],
+    details: {
+      route: {
+        name: 'subscription/[subscriptionId]',
+      },
     },
     set: {
       mutation: subscriptions.set,

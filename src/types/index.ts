@@ -1,6 +1,7 @@
 import type { CreateGlobalStateReturn } from '@vueuse/core'
 import type { QueryConstraint } from 'firebase/database'
 import type { DefineComponent, Ref } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 import type { Subscription, User } from './entities'
 
 export interface Env {
@@ -35,15 +36,20 @@ export interface ConnectionOptions<TListItem extends Record<string, string>> {
     delete?: {
       mutation: Function
     }
-    get?: {
-      query: Function
-      fields: (ItemField<keyof TListItem & string> | ItemSection)[]
+    details?: {
+      route: RouteLocationRaw
     }
     set?: {
       mutation: Function
       fields: (ItemField<keyof TListItem & string> | ItemSection)[]
     }
   }
+}
+
+export interface ItemDetailsOptions<T> {
+  query: Function
+  component: DefineComponent
+  fields: (ItemField < keyof T & string > | ItemSection)[]
 }
 
 export interface ConnectionListOptions<TListItem> {

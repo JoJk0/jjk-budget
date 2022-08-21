@@ -6,13 +6,15 @@
         {{ subscription?.name }}
       </v-card-title>
       <v-card-text class="price">
-        {{ subscription?.amount }} {{ subscription?.currency }}
+        {{ subscription?.amount }} {{ subscription?.currency }} {{ localeAmount }}
       </v-card-text>
     </div>
   </AppItemCard>
 </template>
 
 <script lang="ts" setup>
+import { dinero } from 'dinero.js'
+import * as currencies from '@dinero.js/currencies'
 import type { PropType } from 'vue'
 
 import type { SubscriptionListItem } from '~/types/list-items'
@@ -30,6 +32,13 @@ const imageUrl = computed(() => {
   if (props.subscription?.serviceUrl)
     return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${props.subscription.serviceUrl}&size=64`
 })
+
+const amount = computed(() => dinero({
+  amount: Math.floor(props.subscription.amount * 100),
+  currency: currencies[props.subscription.currency],
+}))
+
+const { localeAmount } = useCurrencyConverter(amount.value, currencies.GBP)
 </script>
 
 <style lang="scss" scoped>
