@@ -14,7 +14,7 @@ specifiers:
   eslint: ^8.18.0
   firebase: ^9.9.0
   jsdom: ^20.0.0
-  luxon: ^3.0.1
+  luxon: ^3.2.1
   material-design-icons-iconfont: ^6.7.0
   md5: ^2.3.0
   normalize.css: ^8.0.1
@@ -39,7 +39,7 @@ dependencies:
   '@vueuse/firebase': 9.0.0-beta.2_firebase@9.9.0+vue@3.2.37
   dinero.js: 2.0.0-alpha.8
   firebase: 9.9.0
-  luxon: 3.0.1
+  luxon: 3.2.1
   material-design-icons-iconfont: 6.7.0
   md5: 2.3.0
   normalize.css: 8.0.1
@@ -3192,8 +3192,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /luxon/3.0.1:
-    resolution: {integrity: sha512-hF3kv0e5gwHQZKz4wtm4c+inDtyc7elkanAsBq+fundaCdUBNJB1dHEGUZIM6SfSBUlbVFduPwEtNjFK8wLtcw==}
+  /luxon/3.2.1:
+    resolution: {integrity: sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==}
     engines: {node: '>=12'}
     dev: false
 
